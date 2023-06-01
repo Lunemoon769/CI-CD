@@ -5,7 +5,7 @@ pipeline {
         stage ('Build Image') {
             steps {
                 script {
-                    dockerapp = docker.build("Lunemoon769/CI-CD", '-f ./src/Dockerfile ./src')
+                    dockerapp = docker.build("lunemoon769/ci-cd", '-f ./src/Dockerfile ./src')
                 }
             }
         }
