@@ -55,7 +55,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: fabricioveronez/api-produto       
+          image: alan769/ci-cd       
           ports: 
           - containerPort: 8080
           env: 
