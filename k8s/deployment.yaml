@@ -42,7 +42,7 @@ metadata:
   name: api
   namespace: ci-cd
 spec:
-  replicas: 20
+  replicas: 1
   selector:
     matchLabels:
       app: api
