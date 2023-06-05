@@ -57,7 +57,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: alan769/ci-cd       
+          image: alan769/ci-cd:{{tag}}
           ports: 
           - containerPort: 8080
           env: 
