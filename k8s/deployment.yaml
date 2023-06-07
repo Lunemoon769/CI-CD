@@ -64,17 +64,38 @@ spec:
           - name: MONGODB_URI
             value: mongodb://mongouser:mongopwd@mongodb-service:27017/admin
 --- 
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: api-service
+#  namespace: ci-cd
+#spec:
+#  selector:
+#    app: api
+#  ports:
+#    - port: 80
+#      targetPort: 8080   
+#      nodePort: 30000  
+#  type: LoadBalancer
+
 apiVersion: v1
 kind: Service
 metadata:
   name: api-service
   namespace: ci-cd
 spec:
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+    nodePort: 30000
   selector:
     app: api
-  ports:
-    - port: 80
-      targetPort: 8080   
-      nodePort: 30000  
-  type: LoadBalancer
+  sessionAffinity: None
+  type: ClusterIP
+
 
