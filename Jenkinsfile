@@ -32,17 +32,5 @@ pipeline {
                 }
             }
         }
-
-        stage ('Deploy Nginx') {
-            environment {
-                tag_version = "${env.BUILD_ID}"
-            }
-            steps {
-                withKubeConfig([credentialsId: 'kube']) {
-                    sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/nginx.yaml' 
-                    sh 'kubectl apply -f ./k8s/nginx.yaml'
-                }
-            }
-        }
     }
 }
