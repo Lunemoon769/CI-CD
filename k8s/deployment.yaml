@@ -96,7 +96,7 @@ spec:
   selector:
     app: api
   sessionAffinity: None
-  type: ClusterIP
+  type: NodePort
 
 ---
 
